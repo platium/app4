@@ -14,7 +14,7 @@
           "port_int": "80",
           "port_ext": "80"
         }
-    },
+    ,
      {
       "name": "backup-server1",
       "template": "ubuntu16",
