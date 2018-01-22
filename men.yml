@@ -1,0 +1,5 @@
+---
+- hosts: web
+  tasks:
+  - name: stop mattermost
+     shell: echo "{{msg}}" >> {{path}}/about.html
