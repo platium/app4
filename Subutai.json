@@ -14,8 +14,9 @@
           "port_int": "80",
           "port_ext": "80"
         }
-    ,
-     {
+      ]
+    },
+    {
       "name": "backup-server1",
       "template": "ubuntu16",
       "peer_group": "HTTP-GROUP",
@@ -30,16 +31,16 @@
       }
     }
   ],
-    "configuration": {
+  "configuration": {
     "arguments": [
       {
-        "name" : "path",
-        "value" : "${path}"
+        "name": "path",
+        "value": "${path}"
       },
       {
-        "name" : "msg",
-        "value" : "My message"
-      }  
+        "name": "msg",
+        "value": "My message"
+      }
     ],
     "playbook": "https://github.com/platium/app4/archive/master.zip",
     "script": "men.yml",
@@ -64,7 +65,7 @@
     "default": "SMALL",
     "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
   },
-   "backupContainerType1": {
+  "backupContainerType1": {
     "description": "you can set TINY,SMALL,MEDIUM,LARGE,HUGE",
     "type": "enum",
     "default": "SMALL",
