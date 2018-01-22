@@ -42,7 +42,7 @@
       }  
     ],
     "playbook": "https://github.com/platium/app4/archive/master.zip",
-    "script": "main.yml",
+    "script": "men.yml",
     "groups": [
       {
         "name": "db",
