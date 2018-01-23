@@ -1,92 +1,56 @@
 {
-  "name": "${environmentName}",
-  "description": "Environment configuration test blueprint",
-  "nodes": [
+  "name": "${envName}",
+  "description": "no need for desc",
+  "containers": [
     {
-      "name": "webserver",
-      "template": "apache",
-      "peer_group": "HTTP-GROUP",
-      "size": "${backupContainerType}",
-      "expose": [
+      "hostname": "web-apache",
+      "template": "abdysamat-apache@b986652a73f7446b7ea9a9ed4c8100e8ef3079f0",
+      "peer-criteria": "free peers",
+      "size": "TINY",
+      "port-mapping": [
         {
           "protocol": "http",
-          "domain": "${domain}",
-          "port_int": "80",
-          "port_ext": "80"
+          "domain": "amamutov.envs.devsubutaihub.com",
+          "external-port": "80",
+          "internal-port": "80"
         }
       ]
-    },
-    {
-      "name": "backup-server1",
-      "template": "ubuntu16",
-      "peer_group": "HTTP-GROUP",
-      "size": "${backupContainerType1}"
     }
   ],
-  "peerGroups": [
+  "peer-criteria": [
     {
-      "name": "HTTP-GROUP",
-      "pricingPref": {
-        "maxPrice": "${maxPrice}"
-      }
+      "name": "free peers",
+      "max-price": "0"
     }
   ],
   "configuration": {
     "arguments": [
       {
-        "name": "path",
-        "value": "${path}"
+        "key": "htmlFileName",
+        "value": "${filename}"
       },
       {
-        "name": "msg",
-        "value": "My message"
+        "key": "htmlContent",
+        "value": "Hello world! This page was craeted with Subutai blueprint: https://github.com/samsonbek/helloworld-bp/"
       }
     ],
-    "playbook": "https://github.com/platium/app4/archive/master.zip",
-    "script": "men.yml",
+    "source-url": "https://github.com/samsonbek/helloworld-bp/archive/master.zip",
+    "ansible-playbook": "main.yml",
     "groups": [
       {
-        "name": "db",
-        "nodes_name": [
-          "backup-server1"
-        ]
-      },
-      {
-        "name": "web",
-        "nodes_name": [
-          "webserver"
+        "name": "web-group",
+        "hostnames": [
+          "web-apache"
         ]
       }
     ]
   },
-  "backupContainerType": {
-    "description": "you can set TINY,SMALL,MEDIUM,LARGE,HUGE",
-    "type": "enum",
-    "default": "SMALL",
-    "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
-  },
-  "backupContainerType1": {
-    "description": "you can set TINY,SMALL,MEDIUM,LARGE,HUGE",
-    "type": "enum",
-    "default": "SMALL",
-    "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
-  },
-  "environmentName": {
-    "description": "Enter environment name",
-    "type": "string",
-    "default": "hey man",
-    "validation": "[a-zA-Z0-9]+"
-  },
-  "path": {
-    "description": "Enter path",
-    "type": "string",
-    "default": "/root",
-    "validation": "[a-zA-Z0-9./]+"
-  },
-  "maxPrice": {
-    "description": "Enter the max price",
-    "type": "int",
-    "default": "5.5",
-    "validation": "\\d+\\.\\d+"
+  "user-variables": {
+    "envName": {
+      "description": "Enter environment name, must container only letters",
+      "type": "string",
+      "default": "HelloWWWorld",
+      "validation": "[a-zA-Z]+"
+    }
   }
 }
