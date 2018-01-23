@@ -18,9 +18,14 @@
     }
   ],
   "peer-criteria": [
-    {
-      "name": "free peers",
-      "max-price": "0"
+     {
+      "name": "HTTP-GROUP",
+      "max-price": "50",
+      "resource-availability": {
+	    "avg-cpu-load": "50",
+	    "min-free-ram": "64000",
+	    "min-free-disk-space": "64000000"
+	    }
     }
   ],
   "configuration": {
