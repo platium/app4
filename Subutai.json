@@ -10,7 +10,7 @@
       "port-mapping": [
         {
           "protocol": "http",
-          "domain": "amamutov.envs.devsubutaihub.com",
+          "domain": "cloud.stage-hub.net",
           "external-port": "80",
           "internal-port": "80"
         }
